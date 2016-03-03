@@ -1,17 +1,5 @@
 <h2>Flight Search</h2>
-<%= form_tag(root_url, method: :get) do %>
-  <%= select_tag(:from_id,     options_for_select(@airport_options), prompt: 'Select origin') %>
-  <%= select_tag(:to_id,       options_for_select(@airport_options), prompt: 'Select destination') %>
-  <%= select_tag(:passengers,  options_for_select(1..4),             prompt: 'Select # of passengers') %>
-  <%= select_tag(:flight_date, options_for_select(@date_options),    prompt: 'Select date and time') %>
-  <%= submit_tag 'Search' %>
-<% end %>
+<%= render 'search' %>
 <% if !@flights.none? %>
-  <% @flights.each do |flight| %>
-    <ul>
-      <%= flight.origin.name %>
-      <%= flight.destination.name %>
-      <%= flight.duration %>
-    </ul>
-  <% end %>
+  <%= render 'search_results' %>
 <% end %>

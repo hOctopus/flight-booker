@@ -2,10 +2,7 @@ class FlightsController < ApplicationController
 
   def index
     @airport_options = Airport.pluck(:name, :code, :id).sort
-    @date_options    = Flight.all.sort.map { |f| f.start.strftime("%b %d, %Y, %I:%M %p") }
+    @date_options    = Flight.all.map { |f| f.start.strftime("%b %d, %Y") }.uniq.sort.reverse
     @flights         = Flight.search(params)
-    if @flights.none?
-      flash[:danger] = "Sorry, there are no available flights."
-    end
   end
 end

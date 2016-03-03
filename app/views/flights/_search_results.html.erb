@@ -1,0 +1,10 @@
+<%= label_tag "Available flights" %>
+<% @flights.each do |flight| %>
+  <ul>
+    <%= radio_button_tag :flight, 'flight' %>
+    <%= label_tag :flight, """#{flight.origin.name} to
+                              #{flight.destination.name}. Duration:
+                              #{flight.duration_in_hours}. Departure:
+                              #{flight.format_date(flight.start)}""" %>
+  </ul>
+<% end %>

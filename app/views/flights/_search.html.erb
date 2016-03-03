@@ -1,0 +1,21 @@
+<%= form_tag(root_url, method: :get) do %>
+  <ul>
+    <%= label_tag 'Origin' %>
+    <%= select_tag(:from_id,     options_for_select(@airport_options)) %>
+  </ul>
+  <ul>
+    <%= label_tag 'Destination' %>
+    <%= select_tag(:to_id,       options_for_select(@airport_options)) %>
+  </ul>
+  <ul>
+    <%= label_tag '# passengers' %>
+    <%= select_tag(:seats,  options_for_select(1..4)) %>
+  </ul>
+  <ul>
+    <%= label_tag 'Date & time' %>
+    <%= select_tag(:flight_date, options_for_select(@date_options)) %>
+  </ul>
+  <ul>
+    <%= submit_tag 'Search' %>
+  </ul>
+<% end %>
