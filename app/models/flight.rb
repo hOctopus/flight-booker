@@ -2,6 +2,8 @@ class Flight < ActiveRecord::Base
 
   belongs_to :origin,      class_name: 'Airport'
   belongs_to :destination, class_name: 'Airport'
+  has_many   :passengers
+  has_many   :bookings
 
   def self.search(params)
     params[:flight_date].nil? ? date = Date.today : date = params[:flight_date].to_date

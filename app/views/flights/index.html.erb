@@ -1,5 +1,13 @@
 <h2>Flight Search</h2>
+
 <%= render 'search' %>
+
 <% if !@flights.none? %>
+
   <%= render 'search_results' %>
+
+<% else %>
+
+  <%= flash[:danger] = "Sorry, no flights available." %>
+
 <% end %>

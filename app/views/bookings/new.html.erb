@@ -1,0 +1,16 @@
+<h3>Passenger information</h3>
+<%= form_for @booking do |f| %>
+
+  <% @passengers.times do |p| %>
+    <%= f.fields_for @booking.passengers.build do |p| %>
+      <ul>
+        <%= p.label :name, value: "Name:" %>
+        <%= p.text_field :name %>
+        <%= p.label :email, value: "Email" %>
+        <%= p.text_field :email %>
+      </ul>
+    <% end %>
+  <% end %>
+
+  <%= f.submit "Book", class: "btn btn-primary" %>
+<% end %>
