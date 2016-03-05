@@ -1,16 +1,15 @@
-<h3>Passenger information</h3>
+<h3>Passenger information for Flight # <%= @flight.id %></h3>
+<h4>Departing from <%= @flight.origin.name %> on <%= @flight.format_date(@flight.start) %></h4>
+<h4>Arriving at <%= @flight.destination.name %> in <%= @flight.duration_in_hours %></h4>
 <%= form_for @booking do |f| %>
-
-  <% @passengers.times do |p| %>
-    <%= f.fields_for @booking.passengers.build do |p| %>
-      <ul>
-        <%= p.label :name, value: "Name:" %>
-        <%= p.text_field :name %>
-        <%= p.label :email, value: "Email" %>
-        <%= p.text_field :email %>
-      </ul>
-    <% end %>
+  <%= f.hidden_field :flight_id %>
+  <%= f.fields_for :passengers do |p| %>
+    <ul>
+      <%= p.label :name, value: "Name:" %>
+      <%= p.text_field :name %>
+      <%= p.label :email, value: "Email" %>
+      <%= p.text_field :email %>
+    </ul>
   <% end %>
-
   <%= f.submit "Book", class: "btn btn-primary" %>
 <% end %>
